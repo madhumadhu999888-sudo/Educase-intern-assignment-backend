@@ -1,5 +1,3 @@
-// server.js - Main Entry Point of our application
-
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
@@ -7,14 +5,11 @@ require("dotenv").config();
 const githubRoutes = require("./routes/githubRoutes");
 const db = require("./db");
 
-// Create Express app
 const app = express();
 
-// Middleware
-app.use(cors()); // Allow cross-origin requests
-app.use(express.json()); // Parse JSON request bodies
+app.use(cors());
+app.use(express.json());
 
-// Welcome route - just to check if server is running
 app.get("/", (req, res) => {
   res.json({
     message: "Welcome to GitHub Profile Analyzer API",
@@ -26,15 +21,12 @@ app.get("/", (req, res) => {
   });
 });
 
-// Use our GitHub routes
 app.use("/api", githubRoutes);
 
-// Start the server - first test database connection
 const PORT = process.env.PORT || 3000;
 
 async function startServer() {
   try {
-    // Test if MySQL is connected
     await db.execute("SELECT 1");
     console.log("MySQL Database connected successfully!");
 
