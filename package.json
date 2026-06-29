@@ -4,7 +4,7 @@
   "description": "A backend service that analyzes GitHub user profiles and stores insights in MySQL",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "dev": "nodemon server.js"
   },
   "keywords": ["github", "analyzer", "nodejs", "express", "mysql"],
